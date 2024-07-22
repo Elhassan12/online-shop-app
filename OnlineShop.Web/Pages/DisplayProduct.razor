@@ -1,0 +1,8 @@
+﻿@inherits DisplayProdcutBase
+@foreach (var product in Products)
+{
+    <div class="col-lg-4 col-md-6 mb-4">
+        <ItemCard Product="@product" />
+    </div>
+}
+

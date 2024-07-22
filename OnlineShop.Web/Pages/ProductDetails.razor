@@ -1,0 +1,36 @@
+﻿@page "/productdetails/{productId:int}"
+
+
+
+@if (Product == null && ErrorMessage == null)
+{
+   <DisplaySpinner/>
+}
+else if (ErrorMessage != null)
+{
+    <DisplayError ErrorMessage="@ErrorMessage"></DisplayError>
+}
+else
+{
+<h3 class="">Product Details</h3>
+<div class="row mt-5">
+    <div class="col-md-6">
+        <img class="img-fluid product-img mb-3" src="@Product.ImageURL"/>
+        </div>
+        <div class="col-md-6 description">
+            <div class="title fs-2">@Product.Name</div>
+            <div class="title text-black-50 mb-3">@Product.Description</div>
+            <span class="price text-black-50">@Product.Price</span>
+            <span class="qty text-black-50">(@Product.Qty totals in stock)</span>
+            <br>
+            <div class="btn rounded-3 mt-3" style="background-color:green; color:white;" @onclick="()=>{
+                addToCart_Click(new CartItemToAddDto{
+CartId=1,
+ProductId=Product.Id,
+Qty=1
+                });
+                }" >Add To Cart</div>
+        </div>
+</div>
+
+}

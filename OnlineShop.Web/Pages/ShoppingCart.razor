@@ -1,0 +1,43 @@
+﻿@page "/shopcart"
+@inherits ShoppingCartBase
+@if (CartItems == null && ErrorMessage == null)
+{
+   <DisplaySpinner/>
+}
+else if (ErrorMessage != null)
+{
+    <DisplayError ErrorMessage="@ErrorMessage"></DisplayError>
+}
+else
+{
+<h3 class="mb-5">ShoppingCart</h3>
+<div class="row p-2">
+       <div class="col-md-9">
+            @foreach (var cartItem in CartItems)
+            {
+             <div class="row2">
+                <div class="col-lg-4">
+                    <img class="img-thumbnail mb-2" src="@cartItem.ProductImageURL">
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="header mb-2">@cartItem.ProductName</div>
+                    <div class="description text-black-50 mb-3">@cartItem.ProductDescription</div>
+                    <div class="price">
+                        <span class="">Price:</span>
+                        <span class="fw-bold">@cartItem.Price</span>
+                    </div>
+                </div>
+                </div>
+            }
+       </div>
+        <div class="payment-section col-lg-3">
+            <div class="summary-header mb-2">Cart Summary</div>
+            <div class="totatl fw-light mb-2">Total:-</div>
+            <div class="payment-button btn btn-success">Process To CheckOut</div>
+        </div>
+       <div class="col-md-3"></div>
+       
+    </div>
+
+}

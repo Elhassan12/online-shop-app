@@ -1,0 +1,29 @@
+﻿@page "/"
+@inherits ProductsBase
+
+@if (Products == null)
+{
+    <DisplaySpinner/>
+}
+else
+{
+    <h3 class="mb-3 fw-bold">Our Products</h3>
+
+    @if (Products.Any())
+    {
+        var gourpedProdcutsbyCategory = getGroupedProductsByCategory();
+        <div class="row">
+            @foreach (var proGroup in gourpedProdcutsbyCategory)
+            {
+                <h4 class="title mb-2 mx-2">@proGroup.FirstOrDefault().CategoryName</h4>
+                <DisplayProduct Products="@proGroup"></DisplayProduct>
+                <hr class="break m-3" />
+            }
+           
+        </div>
+    }
+    else
+    {
+        <p>No products found.</p>
+    }
+}
