@@ -1,4 +1,4 @@
-prerequisites:
+Prerequisites:
 MySql database (workbench).
 Visual studio. 
 .Net7.
