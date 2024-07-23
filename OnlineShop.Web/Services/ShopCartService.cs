@@ -11,6 +11,8 @@ namespace OnlineShop.Web.Services
         private readonly HttpClient httpClient;
 
         public event Action<int> OnShoppingCartChanged;
+        
+        private readonly ILogger<ShopCartService> logger;
 
         public ShopCartService(HttpClient httpClient)
         {
@@ -118,9 +120,10 @@ namespace OnlineShop.Web.Services
                 return null;
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 //Log exception
+                Console.WriteLine(e.Message);
                 throw;
             }
         }

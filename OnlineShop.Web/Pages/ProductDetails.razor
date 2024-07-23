@@ -23,13 +23,13 @@ else
             <span class="price text-black-50">@Product.Price</span>
             <span class="qty text-black-50">(@Product.Qty totals in stock)</span>
             <br>
-            <div class="btn rounded-3 mt-3" style="background-color:green; color:white;" @onclick="()=>{
+            <div class="btn rounded-3 mt-5 " style="background-color:green; color:white;" @onclick="()=>{
                 addToCart_Click(new CartItemToAddDto{
 CartId=1,
 ProductId=Product.Id,
 Qty=1
                 });
-                }" >Add To Cart</div>
+                }" ><i class="oi-basket"></i>Add To Cart</div>
         </div>
 </div>
 

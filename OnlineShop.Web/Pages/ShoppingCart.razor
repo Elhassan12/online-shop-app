@@ -10,34 +10,47 @@ else if (ErrorMessage != null)
 }
 else
 {
-<h3 class="mb-5">ShoppingCart</h3>
-<div class="row p-2">
-       <div class="col-md-9">
-            @foreach (var cartItem in CartItems)
-            {
-             <div class="row2">
-                <div class="col-lg-4">
-                    <img class="img-thumbnail mb-2" src="@cartItem.ProductImageURL">
-                </div>
+    @if(CartItems.Count > 0)
+    {
+        <h3 class="mb-5">ShoppingCart</h3>
+        <div class="row p-2">
+            <div class="col-md-9">
+                @foreach (var cartItem in CartItems)
+                {
+                    <div class="row mb-4">
+                        <div class="col-lg-4">
+                            <img class="img-thumbnail mb-2" src="@cartItem.ProductImageURL">
+                        </div>
 
-                <div class="col-lg-8">
-                    <div class="header mb-2">@cartItem.ProductName</div>
-                    <div class="description text-black-50 mb-3">@cartItem.ProductDescription</div>
-                    <div class="price">
-                        <span class="">Price:</span>
-                        <span class="fw-bold">@cartItem.Price</span>
+                        <div class="col-lg-8">
+                            <div class="header mb-1">@cartItem.ProductName</div>
+                            <div class="description text-black-50 mb-1" style="font-size:15px;">@cartItem.ProductDescription</div>
+                            <div class="price">
+                                 <span class="fw-bold"><b>Price:- $@cartItem.Price</b></span>
+                                <input @oninput="()=>updateQty_button(cartItem.Id)" type="number" @bind="@cartItem.Qty" />
+                                <div data-itemId="@cartItem.Id" class="btn btn-info btn-sm ms-1 update-qty" @onclick="()=>{
+                                    updateItemQty_Click(itemId:cartItem.Id,qty:cartItem.Qty);
+                                }">
+                                    Update<div />
+                                </div>
+                            </div>
+                            <Button class="btn btn-danger sm" @onclick="( () => deleteItemFromCart_Click(cartItem.Id))">Remove</Button>
+                        </div>
                     </div>
-                </div>
-                </div>
-            }
-       </div>
-        <div class="payment-section col-lg-3">
-            <div class="summary-header mb-2">Cart Summary</div>
-            <div class="totatl fw-light mb-2">Total:-</div>
-            <div class="payment-button btn btn-success">Process To CheckOut</div>
+                }
+            </div>
+            <div class="payment-section col-lg-3">
+                <div class="summary-header mb-2">Cart Summary</div>
+                <div class="totatl fw-light mb-2">Total - (@TotalQuantity)&nbsp; <b> @TotalPrice</b> </div>
+                <div class="payment-button btn btn-success" @onclick="()=>OnPayment_Click()">Process To CheckOut</div>
+            </div>
+            <div class="col-md-3"></div>
+
         </div>
-       <div class="col-md-3"></div>
-       
-    </div>
+    }
+    else
+    {
+        <div> There Are No Items In Your Cart</div>
+    }
 
 }

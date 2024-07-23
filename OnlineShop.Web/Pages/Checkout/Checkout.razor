@@ -1,0 +1,57 @@
+﻿@page "/checkout"
+<h3>Checkout</h3>
+
+@if(CartItems == null)
+{
+    <DisplaySpinner></DisplaySpinner>
+}
+else
+{
+    <div class="row">
+        <div class="col-lg-6 mb-auto">
+            <div class="w-100 justify-content-center">
+                <div class="fw-lighter fs-5 mb-1">
+                    Payment Method
+                </div>
+                <div class="pypal btn btn-warning px-5 mb-2 w-100">Paypal</div>
+                <div>
+                    <div class="debit btn btn-dark px-5 mb-1 w-100">Debit or Credit Card</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="header">
+                <div class="fw-lighter fs-5 mb-1">
+                    Payment Summary
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-black">Product</th>
+                        <th class="text-black">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in CartItems)
+                    {
+                        <tr>
+                            <td class="text-black-50">@item.Qty x @item.ProductName</td>
+                            <td class="text-black-50">$@item.TotalPrice</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="text-black">Total</td>
+                        <td class="text-black">@TotalPrice</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+}
+
+@code {
+
+}
