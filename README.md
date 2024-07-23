@@ -7,7 +7,7 @@ How to run the project:
 1-Download the project
 2-Create Database with name --> online_shop <--- on workbench.
 3-Set the connection string in OnlineShop1.Api/appsetting.json with username and passowrd of mySql Server.\
-4-Run the projec.
+4-Run the project.
 
 App UI:
 ![OnlineShop Web and 1 more page - Profile 1 - Microsoft​ Edge 7_23_2024 4_36_58 PM](https://github.com/user-attachments/assets/106ae466-dd63-4397-9669-548d422975b4)
